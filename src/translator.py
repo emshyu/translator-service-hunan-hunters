@@ -28,6 +28,8 @@ def get_language(post: str) -> str:
     )
 
     return response.choices[0].message.content
+
+def translate_content(post: str) -> tuple[bool, str]:
     
 def query_llm_robust(post: str) -> tuple[bool, str]:
   translation_context = "The team is implementing a translation feature for NodeBB, a forum that allows instructors and students to make posts. Your task is to translate the content of English and non-English posts into English. For inputs that are non-english strings, you will translate into college-level English. If inputs are in English, return the input but with spelling and grammar corrections." 
