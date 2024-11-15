@@ -1,4 +1,3 @@
-from src.translator import translate_content
 from src.translator import query_llm_robust
 from openai import AzureOpenAI
 import os
