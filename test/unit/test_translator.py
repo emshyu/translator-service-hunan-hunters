@@ -2,6 +2,10 @@ from src.translator import query_llm_robust
 from openai import AzureOpenAI
 import os
 from mock import patch
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 client = AzureOpenAI(
     api_key = os.getenv("AZURE_OPENAI_API_KEY"),  
