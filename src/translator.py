@@ -8,7 +8,7 @@ load_dotenv()
 client = AzureOpenAI(
     api_key = os.getenv("AZURE_OPENAI_API_KEY"),  
     api_version = "2024-02-15-preview",
-    azure_endpoint = "https://translator-service-hunan-hunters.azurewebsites.net/"  
+    azure_endpoint = "https://p4-emily.openai.azure.com/"  
 )
 
 def get_language(post: str) -> str:
