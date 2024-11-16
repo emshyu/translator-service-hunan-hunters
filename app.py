@@ -3,7 +3,6 @@ import os
 from flask import Flask
 from flask import request, jsonify
 from src.translator import query_llm_robust
-# from src.translator import get
 
 app = Flask(__name__)
 
@@ -11,7 +10,6 @@ app = Flask(__name__)
 def translator():
     content = request.args.get("content", default = "", type = str)
     is_english, translated_content = query_llm_robust(content)
-    # print(f'is_english: {is_english}, translated_content: {translated_content}')
     return jsonify({
         "is_english": is_english,
         "translated_content": translated_content,
