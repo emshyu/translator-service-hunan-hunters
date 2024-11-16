@@ -1,14 +1,14 @@
 import openai
 from openai import AzureOpenAI
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 
-load_dotenv()
+# load_dotenv()
 
 client = AzureOpenAI(
-    api_key = os.getenv("AZURE_OPENAI_API_KEY"),  
-    api_version = "2024-02-15-preview",
-    azure_endpoint = "https://p4-emily.openai.azure.com/"  
+    api_key="",  # Replace with your Azure API key
+    api_version="2024-02-15-preview",
+    azure_endpoint="https://p4-emily.openai.azure.com/"  # Replace with your Azure endpoint
 )
 
 def get_language(post: str) -> str:
@@ -30,7 +30,7 @@ def get_language(post: str) -> str:
     return response.choices[0].message.content
     
 def query_llm_robust(post: str) -> tuple[bool, str]:
-  translation_context = "The team is implementing a translation feature for NodeBB, a forum that allows instructors and students to make posts. Your task is to translate the content of English and non-English posts into English. For inputs that are non-english strings, you will translate into college-level English. If inputs are in English, return the input but with spelling and grammar corrections." 
+  translation_context = "The team is implementing a translation feature for NodeBB, a forum that allows instructors and students to make posts. Your task is to translate the content of English and non-English posts into English and keep all appropriate punctuation. For inputs that are non-english strings, you will translate into college-level English. If inputs are in English, return the input. If it does not have translatable meaning, return \"Not Translatable\" ." 
   translation_response = client.chat.completions.create(
       model="gpt-4o-mini",  # This should match your deployment name in Azure
       messages=[
