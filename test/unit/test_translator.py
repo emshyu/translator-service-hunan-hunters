@@ -11,7 +11,7 @@ import os
 client = AzureOpenAI(
     api_key="",  # Replace with your Azure API key
     api_version="2024-02-15-preview",
-    azure_endpoint="https://p4-emily.openai.azure.com/"  # Replace with your Azure endpoint
+    azure_endpoint="https://p4-tinv1.openai.azure.com/"  # Replace with your Azure endpoint
 )
 
 def test_chinese():
@@ -74,14 +74,14 @@ def test_empty_response(mocker):
     mock_response = mocker.return_value
     mock_response.choices[0].message.content = ""
 
-    assert query_llm_robust("Hola, cómo estás.") == (False, "Sorry, we are unable to provide a translation at this moment. Please try again later!")
+    assert query_llm_robust("Hola, cómo estás.") == (False, "Sorry, we are unable to provide an English Translation.")
 
 @patch('src.translator.client.chat.completions.create')
 def test_none_response(mocker):
     mock_response = mocker.return_value
     mock_response.choices[0].message.content = None
 
-    assert query_llm_robust("Hola, cómo estás.") == (False, "Sorry, we are unable to provide a translation at this moment. Please try again later!")
+    assert query_llm_robust("Hola, cómo estás.") == (False, "Sorry, we are unable to provide an English Translation.")
 
 @patch('src.translator.client.chat.completions.create')
 def test_wrong_language_response(mocker):
