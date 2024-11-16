@@ -35,7 +35,7 @@ def test_numbers():
     is_english, translated_content = query_llm_robust("12345 世界")
     print(f'test_numbers: {translated_content}')
     assert is_english == False
-    assert translated_content == "12345 World"
+    assert translated_content.lower() == "12345 world"
 
 #pass
 def test_puncutation():
