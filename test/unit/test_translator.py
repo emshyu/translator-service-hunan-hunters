@@ -9,7 +9,7 @@ import os
 # load_dotenv()
 
 client = AzureOpenAI(
-    api_key="",  # Replace with your Azure API key
+    api_key=os.getenv("API_KEY"),  # Replace with your Azure API key
     api_version="2024-02-15-preview",
     azure_endpoint="https://p4-tinv1.openai.azure.com/"  # Replace with your Azure endpoint
 )
